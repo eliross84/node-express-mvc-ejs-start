@@ -1,0 +1,33 @@
+{
+  "$id": "31",
+  "AutoRefresh": true,
+  "AutoRefreshRemotes": true,
+  "CommitTextLinks": null,
+  "DraftCommitMsg": null,
+  "IncomingSavedCount": 0,
+  "LastCheckedRemotes": "2019-03-15T11:03:28.3095191-05:00",
+  "LastUsedView": 0,
+  "LogBranchFilterIndex": 0,
+  "OutgoingSavedCount": 0,
+  "SidebarExpandedItems": [
+    "File Status",
+    "Branches"
+  ],
+  "SidebarWidth": 210.0,
+  "SubtreeLinks": [],
+  "RemoteProjectLinks": [
+    {
+      "$id": "32",
+      "BaseUrl": "https://www.bitbucket.org",
+      "Identifier": "src/master",
+      "RemoteName": "origin",
+      "Type": 1,
+      "Username": "eliross84",
+      "CloneUrl": null,
+      "ProjectUrl": null,
+      "AccountId": "",
+      "AvatarUrl": null,
+      "DisplayName": "origin: https://www.bitbucket.org"
+    }
+  ]
+}
