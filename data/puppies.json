@@ -15,7 +15,8 @@
         "parentBreed": "Cavalier King Charles",
         "parentAge": 6
       }
-    ]
+    ],
+    "owner": "Eli"
   },
   {
     "_id": 2,
@@ -33,7 +34,8 @@
         "parentBreed": "Labrador",
         "parentAge": 6
       }
-    ]
+    ],
+    "owner": "Revanth"
   },
   {
     "_id": 3,
@@ -51,6 +53,7 @@
         "parentBreed": "Beagle",
         "parentAge": 6
       }
-    ]
+    ],
+    "owner": "Jacob"
   }
 ]

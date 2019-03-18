@@ -33,6 +33,11 @@ const PuppySchema = new mongoose.Schema({
         parentAge: 6
       }
     ]
+  },
+  owner: {
+    type: String,
+    required: true,
+    default: 'Stray'
   }
 })
 module.exports = mongoose.model('Puppy', PuppySchema)
