@@ -9,6 +9,7 @@ const products = require('../data/products.json')
 const orders = require('../data/orders.json')
 const orderLineItems = require('../data/orderLineItems.json')
 const puppies = require('../data/puppies.json')
+const developers = require('../data/developers.json')
 
 // inject the app to seed the data
 
