@@ -25,6 +25,7 @@ module.exports = (app) => {
   db.customers.insert(customers)
 
   // initialize app.locals (these objects will be available to our controllers)
+  
   app.locals.customers = db.customers.find(customers)
   LOG.debug(`${app.locals.customers.query.length} customers seeded`)
 
@@ -36,6 +37,13 @@ module.exports = (app) => {
   // insert the sample data into our data store
   db.products.insert(products)
 
+  //this is where developer information will be added
+
+  app.locals.developers = db.developers.find(developerData)
+  LOG.debug(`${app.locals.developerData.query.length} developers seeded?`)
+  
+  
+  
   // initialize app.locals (these objects will be available to our controllers)
   app.locals.products = db.products.find(products)
   LOG.debug(`${app.locals.products.query.length} products seeded`)
