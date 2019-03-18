@@ -1,5 +1,11 @@
 # Node Express MVC EJS Bootstrap Starter app
 
+## App Developers
+
+1. Eli Ross
+2. Revanth Davuluri
+3. Jacob Hughes
+
 A sample starter app using:
 
 - Node.js platform
