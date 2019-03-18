@@ -1,0 +1,26 @@
+[
+    {
+        "_id": 1,
+        "name": "Eli Ross",
+        "email": "",
+        "gitUsername": "",
+        "major": "",
+        "yearOfGrad": ,
+    },
+    {
+        "_id": 2,
+        "name": "Revanth ",
+        "email": "",
+        "gitUsername": "",
+        "major": "",
+        "yearOfGrad": ,
+    },
+    {
+        "_id": 3,
+        "name": "Jacob Hughes",
+        "email": "",
+        "gitUsername": "",
+        "major": "",
+        "yearOfGrad": ,
+    }
+]
