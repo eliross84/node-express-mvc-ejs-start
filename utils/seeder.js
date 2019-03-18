@@ -10,6 +10,8 @@ const orders = require('../data/orders.json')
 const orderLineItems = require('../data/orderLineItems.json')
 const puppies = require('../data/puppies.json')
 
+
+
 // inject the app to seed the data
 
 module.exports = (app) => {
@@ -20,7 +22,7 @@ module.exports = (app) => {
 
   db.customers = new Datastore()
   db.customers.loadDatabase()
-
+  
   // insert the sample data into our data store
   db.customers.insert(customers)
 
@@ -38,9 +40,15 @@ module.exports = (app) => {
   db.products.insert(products)
 
   //this is where developer information will be added
+  // this will be changed later so that it works?
+  db.developers = new Datastore()
+  db.customers.loadDatabase()  
 
-  app.locals.developers = db.developers.find(developerData)
-  LOG.debug(`${app.locals.developerData.query.length} developers seeded?`)
+  db.developers.insert(developers)
+  //the above code should put developer info from developers.json in a new datastore
+
+  app.locals.developers = db.developers.find(developers)
+  LOG.debug(`${app.locals.developers.query.length} developers seeded?`)
   
   
   
