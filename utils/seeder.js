@@ -40,23 +40,6 @@ module.exports = (app) => {
   // insert the sample data into our data store
   db.products.insert(products)
 
-  //this is where developer information will be added
-  // this will be changed later so that it works?
-  db.developers = new Datastore()
-  db.customers.loadDatabase()  
-
-  db.developers.insert(developers)
-  //the above code should put developer info from developers.json in a new datastore
-
-  app.locals.developers = db.developers.find(developers)
-  LOG.debug(`${app.locals.developers.query.length} developers seeded?`)
-  
-  
-  
-  // initialize app.locals (these objects will be available to our controllers)
-  app.locals.products = db.products.find(products)
-  LOG.debug(`${app.locals.products.query.length} products seeded`)
-
   // Orders need a customer beforehand .................................
 
   db.orders = new Datastore()
