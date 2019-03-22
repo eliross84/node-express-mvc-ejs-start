@@ -21,17 +21,23 @@ const errorHandler = require('errorhandler')
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const LOG = require('./utils/logger.js')
+const PORT = 8080
+const HOST = "0.0.0.0"
 
 // Load environment variables from .env file, where port, API keys, and passwords are configured.
+<<<<<<< HEAD
 dotenv.config({ path: '.env' })
+=======
+// dotenv.load({ dotenv.config })
+>>>>>>> ab9211a7e2b86224bd0d0f28c20533a28cca0f33
 LOG.info('Environment variables loaded into process.env.')
 
 // create express app ..................................
 const app = express()
 
 // configure app.settings.............................
-app.set('port', process.env.PORT )
-app.set('host', process.env.HOST )
+app.set('port', PORT )
+app.set('host', HOST )
 
 // set the root view folder
 app.set('views', path.join(__dirname, 'views'))
