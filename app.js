@@ -25,7 +25,11 @@ const PORT = 8080
 const HOST = "0.0.0.0"
 
 // Load environment variables from .env file, where port, API keys, and passwords are configured.
+<<<<<<< HEAD
+dotenv.config({ path: '.env' })
+=======
 // dotenv.load({ dotenv.config })
+>>>>>>> ab9211a7e2b86224bd0d0f28c20533a28cca0f33
 LOG.info('Environment variables loaded into process.env.')
 
 // create express app ..................................
