@@ -3,9 +3,24 @@
         "_id": 111,
         "username": "johndoe1",
         "useraccountid": "12345",
-        "balance": 13.01,
         "state": "MO",
         "city": "Maryville",
-        "zipcode": 64468,
+        "zipcode": "64468"
     },
+    {
+        "_id": 222,
+        "username": "janedoe",
+        "useraccountid": "54321",
+        "state": "NE",
+        "city": "Omaha",
+        "zipcode": "45785"
+    },
+    {
+        "_id": 333,
+        "username": "johnhancock",
+        "useraccountid": "11223",
+        "state": "MA",
+        "city": "Boston",
+        "zipcode": "10345"
+    }
 ]
