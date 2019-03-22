@@ -23,7 +23,7 @@ const mongoose = require('mongoose')
 const LOG = require('./utils/logger.js')
 
 // Load environment variables from .env file, where port, API keys, and passwords are configured.
-dotenv.load({ path: '.env' })
+dotenv.config({ path: '.env' })
 LOG.info('Environment variables loaded into process.env.')
 
 // create express app ..................................
