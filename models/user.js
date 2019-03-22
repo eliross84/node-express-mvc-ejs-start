@@ -1,7 +1,5 @@
 const mongoose = require('mongoose')
 
-//briar will change this
-
 const UserSchema = new mongoose.Schema({
   _id: { type: Number, required: true },
   username: { type: String, required: true, unique: false, default: 'smith' },
@@ -9,7 +7,6 @@ const UserSchema = new mongoose.Schema({
   state: {type: String, required: true, default: 'MO'},
   city:{type: String, required: true, default: 'Maryville'},
   zipcode: {type: String, required: true, default: 64468}
-  //add in an amount we have in store
 })
 
 module.exports = mongoose.model('User', UserSchema)
