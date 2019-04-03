@@ -1,0 +1,39 @@
+[
+{
+"transactionID":100 ,
+"amount":1000,
+"transactionDate": "2019-01-01",
+"postedDate": "2019-01-03", 
+"transactionType": "Purchase",
+"cardNumber":"1234 1234 1234 1235", 
+"transactionStatus": true
+},
+{
+"transactionID":101 ,
+"amount":500,
+"transactionDate": "2019-02-01",
+"postedDate": "2019-02-03", 
+"transactionType": "Deposit",
+"cardNumber":"1234 4321 1234 4322", 
+"transactionStatus": true
+},
+{
+"transactionID":102,
+"amount":10,
+"transactionDate": "2019-01-18",
+"postedDate": "2019-01-18", 
+"transactionType": "Purchase",
+"cardNumber":"4321 1234 1234 1236", 
+"transactionStatus": true
+},
+{
+"transactionID":103,
+"amount":500,
+"transactionDate": "2019-01-01",
+"postedDate": "2019-01-03", 
+"transactionType": "Withdraw",
+"cardNumber":"1234 1234 1234 1237", 
+"transactionStatus": true
+}
+] 
+ 
