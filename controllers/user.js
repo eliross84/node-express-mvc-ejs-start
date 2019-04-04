@@ -1,6 +1,6 @@
 /** 
-*  Customer controller
-*  Handles requests related to customers (see routes)
+*  User controller
+*  Handles requests related to users (see routes)
 *
 * @author Eli Ross <s528926@nwmissouri.edu>
 *
@@ -10,7 +10,7 @@ const api = express.Router()
 const LOG = require('../utils/logger.js')
 const find = require('lodash.find')
 const remove = require('lodash.remove')
-const Model = require('../models/customer.js')
+const Model = require('../models/user.js')
 const notfoundstring = 'user not found'
 
 // RESPOND WITH JSON DATA  --------------------------------------------
@@ -48,7 +48,7 @@ api.get('/create', (req, res) => {
       {
         title: 'Create user',
         layout: 'layout.ejs',
-        customer: item
+        user: item
       })
   })
 
@@ -64,7 +64,7 @@ api.get('/delete/:id', (req, res) => {
       {
         title: 'Delete user',
         layout: 'layout.ejs',
-        customer: item
+        user: item
       })
   })
 
@@ -80,7 +80,7 @@ api.get('/details/:id', (req, res) => {
       {
         title: 'User Details',
         layout: 'layout.ejs',
-        customer: item
+        user: item
       })
   })
 
@@ -96,7 +96,7 @@ api.get('/edit/:id', (req, res) => {
       {
         title: 'Users',
         layout: 'layout.ejs',
-        customer: item
+        user: item
       })
   })
 
@@ -110,8 +110,8 @@ api.post('/save', (req, res) => {
     const item = new Model()
     LOG.info(`NEW ID ${req.body._id}`)
     item._id = parseInt(req.body._id)
-    item.username = req.body.username
     item.useraccountid = req.body.useraccountid
+    item.username = req.body.username
     item.city = req.body.city
     item.state = req.body.state
     item.zipcode = req.body.zipcode
@@ -130,8 +130,8 @@ api.post('/save/:id', (req, res) => {
     if (!item) { return res.end(notfoundstring) }
     LOG.info(`ORIGINAL VALUES ${JSON.stringify(item)}`)
     LOG.info(`UPDATED VALUES: ${JSON.stringify(req.body)}`)
-    item.username = req.body.username
     item.useraccountid = req.body.useraccountid
+    item.username = req.body.username
     item.city = req.body.city
     item.state = req.body.state
     item.zipcode = req.body.zipcode
