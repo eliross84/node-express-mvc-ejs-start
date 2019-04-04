@@ -1,0 +1,39 @@
+<br>
+<br>
+<div class="container-fluid">
+  <div class=row>
+    <div class="col col-md-12">
+      <a href="user/create" class="btn btn-primary new">
+        Create a new user
+      </a>
+
+      <h2>Recent entries</h2>
+      <p>There are
+        <%= users.query.length %> users.
+        <br>
+      </p>
+      <% for (var i = users.query.length-1; i >= 0; i--) {   
+        user = users.query[i];   %>
+      <div class="panel panel-default">
+        <div class="panel-heading"></div>
+        <div class="text-muted pull-right"></div>
+        <div class="panel-body">
+
+          <br> ID: <%=  user._id %>
+          <br> useraccountid: <%=user.useraccountid%>
+          <br> state: <%=user.description%>
+          <br> city: <%=user.unitPrice%>
+          <br> ZIP: <%=user.zipcode%>
+          <hr>
+          <a href="/user/delete/<%= user._id  %>" class="btn btn-danger"> Delete </a>
+          <a href="/user/details/<%= user._id %>" class="btn btn-info"> Details </a>
+          <a href="/user/edit/<%= user._id %>" class="btn btn-primary"> Edit </a>
+          <hr>
+          <hr>
+        </div>
+      </div>
+      <% } %>
+
+    </div>
+  </div>
+</div>
