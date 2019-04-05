@@ -55,6 +55,7 @@ app.use((req, res, next) => {
 
 // specify various resources and apply them to our application
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 app.use(expressLayouts)
 app.use(errorHandler()) // load error handler
