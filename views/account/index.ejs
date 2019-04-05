@@ -1,0 +1,38 @@
+<br>
+<br>
+<div class="container-fluid">
+  <div class=row>
+    <div class="col col-md-12">
+      <a href="account/create" class="btn btn-primary new">
+        Add a new account
+      </a>
+
+      <h2>Accounts so Far</h2>
+      <p>
+        <%= users.query.length %> accounts already exist.
+        <br>
+      </p>
+      <% for (var i = accounts.query.length-1; i >= 0; i--) {   
+        account = accounts.query[i];   %>
+      <div class="panel panel-default">
+        <div class="panel-heading"></div>
+        <div class="text-muted pull-right"></div>
+        <div class="panel-body">
+<!-- guess who learned how to comment in EJS -->
+
+          <br> ID: <%= account._id %>
+          <br> acountNum: <%= account.acountNum %>
+          <br> balance: <%= account.balance %>
+          <br> routingNum: <%= account.routingNum %>
+          <hr>
+          <a href="/account/delete/<%= user._id  %>" class="btn btn-danger"> Delete </a>
+          <a href="/account/details/<%= user._id %>" class="btn btn-info"> Details </a>
+          <a href="/account/edit/<%= user._id %>" class="btn btn-primary"> Edit </a>
+          <hr>
+          <hr>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
