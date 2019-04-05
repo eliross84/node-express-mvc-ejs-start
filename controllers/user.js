@@ -78,7 +78,7 @@ api.get('/details/:id', (req, res) => {
     LOG.info(`RETURNING VIEW FOR ${JSON.stringify(item)}`)
     return res.render('user/details.ejs',
       {
-        title: 'User Details',
+        title: 'user Details',
         layout: 'layout.ejs',
         user: item
       })
@@ -94,7 +94,7 @@ api.get('/edit/:id', (req, res) => {
     LOG.info(`RETURNING VIEW FOR${JSON.stringify(item)}`)
     return res.render('user/edit.ejs',
       {
-        title: 'Users',
+        title: 'users',
         layout: 'layout.ejs',
         user: item
       })
