@@ -10,15 +10,15 @@ const api = express.Router()
 const LOG = require('../utils/logger.js')
 const find = require('lodash.find')
 const remove = require('lodash.remove')
-const Model = require('../models/transactionLineItem.js')
-const notfoundstring = 'transactionLineItem not found'
+const Model = require('../models/transaction.js')
+const notfoundstring = 'transaction not found'
 
 // RESPOND WITH JSON DATA  --------------------------------------------
 
 // GET all JSON
 api.get('/findall', (req, res) => {
   res.setHeader('Content-Type', 'application/json')
-  const data = req.app.locals.transactionLineItems.query
+  const data = req.app.locals.transaction.query
   res.send(JSON.stringify(data))
 })
 
@@ -26,7 +26,7 @@ api.get('/findall', (req, res) => {
 api.get('/findone/:id', (req, res) => {
   res.setHeader('Content-Type', 'application/json')
   const id = parseInt(req.params.id)
-  const data = req.app.locals.transactionLineItems.query
+  const data = req.app.locals.transaction.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   res.send(JSON.stringify(item))
@@ -44,9 +44,9 @@ api.get('/create', (req, res) => {
   LOG.info(`Handling GET /create${req}`)
   const item = new Model()
   LOG.debug(JSON.stringify(item))
-  res.render('transactionLineItem/create',
+  res.render('transaction/create',
     {
-      title: 'Create transactionLineItem',
+      title: 'Create transaction',
       layout: 'layout.ejs',
       transactionLineItem: item
     })
@@ -57,24 +57,23 @@ res.render('transactionLineItem/index.ejs')
 api.get('/delete/:id', (req, res) => {
   LOG.info(`Handling GET /delete/:id ${req}`)
   const id = parseInt(req.params.id)
-  const data = req.app.locals.transactionLineItems.query
+  const data = req.app.locals.transaction.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`RETURNING VIEW FOR ${JSON.stringify(item)}`)
   return res.render('transactionLineItem/delete.ejs',
     {
-      title: 'Delete transactionLineItem',
+      title: 'Delete transaction',
       layout: 'layout.ejs',
       transactionLineItem: item
     })
-res.render('transactionLineItem/index.ejs')
 })
 
 // GET /details/:id
 api.get('/details/:id', (req, res) => {
   LOG.info(`Handling GET /details/:id ${req}`)
   const id = parseInt(req.params.id)
-  const data = req.app.locals.transactionLineItems.query
+  const data = req.app.locals.transaction.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`RETURNING VIEW FOR ${JSON.stringify(item)}`)
