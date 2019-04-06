@@ -21,7 +21,7 @@ A sample starter app using:
 - Winston logger
 
 ## Overview
-
+Our app is a basic viewing app that shows the details of all users, orders, and transactions that are being processed within a company. The ID's do not all exactly match up yet, but they would if we had reached the point in time of learned foreign keys. All of the information within our data is just for example purposes. 
 
 ## Links
 

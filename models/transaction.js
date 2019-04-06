@@ -18,7 +18,7 @@ const TransactionSchema = new mongoose.Schema({
     postedDate:{type:Date,required:true,default:Date.now()},
     transactionType: { type: String, enum: ['NA', 'Deposit', 'Withdraw', 'Purchase'], required: true, default: 'NA',unique:true },
     cardNumber: {type: String, required: true, default: '0000 0000 0000 0000'},
-    transactionStatus:{type:boolean, required: true,default:false}, 
+    transactionStatus:{type: boolean, required: true,default:false} 
      
     
 })

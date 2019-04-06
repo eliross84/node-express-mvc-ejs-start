@@ -36,7 +36,7 @@ api.get('/findone/:id', (req, res) => {
 
 // GET to this controller base URI (the default)
 api.get('/', (req, res) => {
-  res.render('transactionLineItem/index.ejs')
+  res.render('transaction/index.ejs')
 })
 
 // GET create
@@ -48,9 +48,9 @@ api.get('/create', (req, res) => {
     {
       title: 'Create transaction',
       layout: 'layout.ejs',
-      transactionLineItem: item
+      transaction: item
     })
-res.render('transactionLineItem/index.ejs')
+res.render('transaction/index.ejs')
 })
 
 // GET /delete/:id
@@ -61,11 +61,11 @@ api.get('/delete/:id', (req, res) => {
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`RETURNING VIEW FOR ${JSON.stringify(item)}`)
-  return res.render('transactionLineItem/delete.ejs',
+  return res.render('transaction/delete.ejs',
     {
       title: 'Delete transaction',
       layout: 'layout.ejs',
-      transactionLineItem: item
+      transaction: item
     })
 })
 
@@ -77,30 +77,29 @@ api.get('/details/:id', (req, res) => {
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`RETURNING VIEW FOR ${JSON.stringify(item)}`)
-  return res.render('transactionLineItem/details.ejs',
+  return res.render('transaction/details.ejs',
     {
-      title: 'transactionLineItem Details',
+      title: 'transaction Details',
       layout: 'layout.ejs',
-      transactionLineItem: item
+      transaction: item
     })
-res.render('transactionLineItem/index.ejs')
+res.render('transaction/index.ejs')
 })
 
 // GET /edit/:id
 api.get('/edit/:id', (req, res) => {
   LOG.info(`Handling GET /edit/:id ${req}`)
   const id = parseInt(req.params.id)
-  const data = req.app.locals.transactionLineItems.query
+  const data = req.app.locals.transaction.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`RETURNING VIEW FOR ${JSON.stringify(item)}`)
-  return res.render('transactionLineItem/edit.ejs',
+  return res.render('transaction/edit.ejs',
     {
-      title: 'transactionLineItems',
+      title: 'transaction',
       layout: 'layout.ejs',
-      transactionLineItem: item
+      transaction: item
     })
-res.render('transactionLineItem/index.ejs')
 })
 
 // HANDLE EXECUTE DATA MODIFICATION REQUESTS --------------------------------------------
@@ -109,7 +108,7 @@ res.render('transactionLineItem/index.ejs')
 api.post('/save', (req, res) => {
   LOG.info(`Handling POST ${req}`)
   LOG.debug(JSON.stringify(req.body))
-  const data = req.app.locals.transactionLineItems.query
+  const data = req.app.locals.transaction.query
   const item = new Model()
   LOG.info(`NEW ID ${req.body._id}`)
 //   item._id = parseInt(req.body._id)
@@ -121,8 +120,8 @@ api.post('/save', (req, res) => {
   item.cardNumber = parseInt(req.body.cardNumber)
   item.transactionStatus = parseInt(req.body.transactionStatus)
   data.push(item)
-  LOG.info(`SAVING NEW transactionLineItem ${JSON.stringify(item)}`)
-  return res.redirect('/transactionLineItem/index.ejs')
+  LOG.info(`SAVING NEW transaction ${JSON.stringify(item)}`)
+  return res.redirect('/transaction/index.ejs')
 })
 
 // POST update
@@ -130,7 +129,7 @@ api.post('/save/:id', (req, res) => {
   LOG.info(`Handling SAVE request ${req}`)
   const id = parseInt(req.params.id)
   LOG.info(`Handling SAVING ID=${id}`)
-  const data = req.app.locals.transactionLineItems.query
+  const data = req.app.locals.transaction.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`ORIGINAL VALUES ${JSON.stringify(item)}`)
@@ -142,26 +141,26 @@ api.post('/save/:id', (req, res) => {
   item.transactionType = parseInt(req.body.transactionType)
   item.cardNumber = parseInt(req.body.cardNumber)
   item.transactionStatus = parseInt(req.body.transactionStatus)
-  LOG.info(`SAVING UPDATED transactionLineItem ${JSON.stringify(item)}`)
-  return res.redirect('/transactionLineItem/index.ejs')
+  LOG.info(`SAVING UPDATED transaction ${JSON.stringify(item)}`)
+  return res.redirect('/transaction/index.ejs')
 })
 
 // DELETE id (uses HTML5 form method POST)
 api.post('/delete/:id', (req, res) => {
-//   LOG.info(`Handling DELETE request ${req}`)
-//   const id = parseInt(req.params.id)
-//   LOG.info(`Handling REMOVING ID=${id}`)
-//   const data = req.app.locals.transactionLineItems.query
-//   const item = find(data, { _id: id })
-//   if (!item) { return res.end(notfoundstring) }
-//   if (item.isActive) {
-//     item.isActive = false
-//     console.log(`Deacctivated item ${JSON.stringify(item)}`)
-//   } else {
-//     const item = remove(data, { _id: id })
-//     console.log(`Permanently deleted item ${JSON.stringify(item)}`)
-//   }
-  return res.redirect('/transactionLineItem/index.ejs')
+   LOG.info(`Handling DELETE request ${req}`)
+   const id = parseInt(req.params.id)
+   LOG.info(`Handling REMOVING ID=${id}`)
+   const data = req.app.locals.transaction.query
+   const item = find(data, { _id: id })
+   if (!item) { return res.end(notfoundstring) }
+   if (item.isActive) {
+     item.isActive = false
+     console.log(`Deacctivated item ${JSON.stringify(item)}`)
+   } else {
+     const item = remove(data, { _id: id })
+     console.log(`Permanently deleted item ${JSON.stringify(item)}`)
+   }
+  return res.redirect('/transaction/index.ejs')
 })
 
 module.exports = api
