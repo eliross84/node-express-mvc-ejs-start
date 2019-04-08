@@ -3,7 +3,8 @@ const Datastore = require('nedb')
 const LOG = require('../utils/logger.js')
 
 // require each data file
-
+// require each data file
+const transactions = require('../data/transactions.json')
 const customers = require('../data/customers.json')
 const products = require('../data/products.json')
 const orders = require('../data/orders.json')
@@ -86,6 +87,19 @@ module.exports = (app) => {
   // initialize app.locals (these objects will be available to our controllers)
   app.locals.users = db.users.find(users)
   LOG.debug(`${app.locals.users.query.length} users seeded`)
+
+  
+
+  db.transactions = new Datastore()
+  db.transactions.loadDatabase()
+
+  // insert the sample data into our data store
+  db.transactions.insert(transactions)
+
+  // initialize app.locals (these objects will be available to our controllers)
+  app.locals.transactions = db.transactions.find(transactions)
+  LOG.debug(`${app.locals.transactions.query.length} transaction seeded`)
+
 
 
   LOG.info('END Seeder. Sample data read and verified.')
