@@ -1,8 +1,8 @@
 /** 
-*  Order line item controller
-*  Handles requests related to order line items (see routes)
+*  transaction line item controller
+*  Handles requests related to transaction line items (see routes)
 *
-* @author Denise Case <dcase@nwmissouri.edu>
+* @author  <S534917@nwmissouri.edu>
 *
 */
 const express = require('express')
@@ -18,7 +18,7 @@ const notfoundstring = 'transaction not found'
 // GET all JSON
 api.get('/findall', (req, res) => {
   res.setHeader('Content-Type', 'application/json')
-  const data = req.app.locals.transactions.query
+  const data = req.app.locals.transaction.query
   res.send(JSON.stringify(data))
 })
 
@@ -26,7 +26,7 @@ api.get('/findall', (req, res) => {
 api.get('/findone/:id', (req, res) => {
   res.setHeader('Content-Type', 'application/json')
   const id = parseInt(req.params.id)
-  const data = req.app.locals.transactions.query
+  const data = req.app.locals.transaction.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   res.send(JSON.stringify(item))
@@ -50,13 +50,14 @@ api.get('/create', (req, res) => {
       layout: 'layout.ejs',
       transaction: item
     })
+res.render('transaction/index.ejs')
 })
 
 // GET /delete/:id
 api.get('/delete/:id', (req, res) => {
   LOG.info(`Handling GET /delete/:id ${req}`)
   const id = parseInt(req.params.id)
-  const data = req.app.locals.transactions.query
+  const data = req.app.locals.transaction.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`RETURNING VIEW FOR ${JSON.stringify(item)}`)
@@ -72,7 +73,7 @@ api.get('/delete/:id', (req, res) => {
 api.get('/details/:id', (req, res) => {
   LOG.info(`Handling GET /details/:id ${req}`)
   const id = parseInt(req.params.id)
-  const data = req.app.locals.transactions.query
+  const data = req.app.locals.transaction.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`RETURNING VIEW FOR ${JSON.stringify(item)}`)
@@ -82,19 +83,20 @@ api.get('/details/:id', (req, res) => {
       layout: 'layout.ejs',
       transaction: item
     })
+res.render('transaction/index.ejs')
 })
 
 // GET /edit/:id
 api.get('/edit/:id', (req, res) => {
   LOG.info(`Handling GET /edit/:id ${req}`)
   const id = parseInt(req.params.id)
-  const data = req.app.locals.transactions.query
+  const data = req.app.locals.transaction.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`RETURNING VIEW FOR ${JSON.stringify(item)}`)
   return res.render('transaction/edit.ejs',
     {
-      title: 'transactions',
+      title: 'transaction',
       layout: 'layout.ejs',
       transaction: item
     })
@@ -106,22 +108,20 @@ api.get('/edit/:id', (req, res) => {
 api.post('/save', (req, res) => {
   LOG.info(`Handling POST ${req}`)
   LOG.debug(JSON.stringify(req.body))
-  const data = req.app.locals.transactions.query
+  const data = req.app.locals.transaction.query
   const item = new Model()
   LOG.info(`NEW ID ${req.body._id}`)
-  item._id = parseInt(req.body._id)
-  
-  item.transacation_number = req.body.transacation_number
-  item.transacation_type = req.body.transacation_type
-  item.name = req.body.name
-  item.accountNumber = req.body.accountNumber
-  
-  item.transaction_date = req.body.transaction_date
-  
- 
+//   item._id = parseInt(req.body._id)
+  item.transactionID = parseInt(req.body.transactionID)
+  item.amount = parseInt(req.body.amount)
+  item.transactionDate = parseInt(req.body.transactionDate)
+  item.postedDate = parseInt(req.body.postedDate)
+  item.transactionType = parseInt(req.body.transactionType)
+  item.cardNumber = parseInt(req.body.cardNumber)
+  item.transactionStatus = parseInt(req.body.transactionStatus)
   data.push(item)
   LOG.info(`SAVING NEW transaction ${JSON.stringify(item)}`)
-  return res.redirect('/transaction')
+  return res.redirect('/transaction/index.ejs')
 })
 
 // POST update
@@ -129,36 +129,38 @@ api.post('/save/:id', (req, res) => {
   LOG.info(`Handling SAVE request ${req}`)
   const id = parseInt(req.params.id)
   LOG.info(`Handling SAVING ID=${id}`)
-  const data = req.app.locals.transactions.query
+  const data = req.app.locals.transaction.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`ORIGINAL VALUES ${JSON.stringify(item)}`)
   LOG.info(`UPDATED VALUES: ${JSON.stringify(req.body)}`)
-  item.name = req.body.name
-  item.accountNumber = req.body.accountNumber
-  item.transacation_number = req.body.transacation_number
-  item.transaction_date = req.body.transaction_date
-  item.transacation_type = req.body.transacation_type
+  item.transactionID = parseInt(req.body.transactionID)
+  item.amount = parseInt(req.body.amount)
+  item.transactionDate = parseInt(req.body.transactionDate)
+  item.postedDate = parseInt(req.body.postedDate)
+  item.transactionType = parseInt(req.body.transactionType)
+  item.cardNumber = parseInt(req.body.cardNumber)
+  item.transactionStatus = parseInt(req.body.transactionStatus)
   LOG.info(`SAVING UPDATED transaction ${JSON.stringify(item)}`)
-  return res.redirect('/transaction')
+  return res.redirect('/transaction/index.ejs')
 })
 
 // DELETE id (uses HTML5 form method POST)
 api.post('/delete/:id', (req, res) => {
-  LOG.info(`Handling DELETE request ${req}`)
-  const id = parseInt(req.params.id)
-  LOG.info(`Handling REMOVING ID=${id}`)
-  const data = req.app.locals.transactions.query
-  const item = find(data, { _id: id })
-  if (!item) { return res.end(notfoundstring) }
-  if (item.isActive) {
-    item.isActive = false
-    console.log(`Deacctivated item ${JSON.stringify(item)}`)
-  } else {
-    const item = remove(data, { _id: id })
-    console.log(`Permanently deleted item ${JSON.stringify(item)}`)
-  }
-  return res.redirect('/transaction')
+   LOG.info(`Handling DELETE request ${req}`)
+   const id = parseInt(req.params.id)
+   LOG.info(`Handling REMOVING ID=${id}`)
+   const data = req.app.locals.transaction.query
+   const item = find(data, { _id: id })
+   if (!item) { return res.end(notfoundstring) }
+   if (item.isActive) {
+     item.isActive = false
+     console.log(`Deacctivated item ${JSON.stringify(item)}`)
+   } else {
+     const item = remove(data, { _id: id })
+     console.log(`Permanently deleted item ${JSON.stringify(item)}`)
+   }
+  return res.redirect('/transaction/index.ejs')
 })
 
 module.exports = api
