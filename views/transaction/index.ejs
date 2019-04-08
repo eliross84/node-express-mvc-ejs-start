@@ -1,0 +1,41 @@
+<br>
+<br>
+<div class="container-fluid">
+  <div class=row>
+    <div class="col col-md-12">
+      <a href="transaction/create" class="btn btn-primary new">
+        Create a new transaction
+      </a>
+
+      <h2>Recent entries</h2>
+      <p>There are
+        <%= transactions.query.length %> order line items.
+        <br>
+      </p>
+      <% for (var i = transactions.query.length-1; i >= 0; i--) {   
+        trans = transactions.query[i];   %>
+
+      <div class="panel panel-default">
+        <div class="panel-heading"></div>
+        <div class="text-muted pull-right"></div>
+        <div class="panel-body">
+
+          <br> transacation_number: <%=trans.transacation_number%>
+          <br> transacation_type: <%=trans.transacation_type%>
+          <br> name: <%=trans.name%>
+          <br> accountNumber: <%=trans.accountNumber%>
+          <br> transaction_date: <%=trans.transaction_date%>
+
+          <hr>
+          <a href="/transaction/delete/<%= trans._id  %>" class="btn btn-danger"> Delete </a>
+          <a href="/transaction/details/<%= trans._id %>" class="btn btn-info"> Details </a>
+          <a href="/transaction/edit/<%= trans._id %>" class="btn btn-primary"> Edit </a>
+          <hr>
+          <hr>
+        </div>
+      </div>
+      <% } %>
+
+    </div>
+  </div>
+</div>

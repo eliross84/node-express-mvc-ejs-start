@@ -1,0 +1,27 @@
+<br>
+<br>
+<div class="container-fluid">
+  <div class=row>
+    <div class="col col-md-12">
+
+      <h2>Confirm deletion of transaction line item</h2>
+      <br>
+      <br> ID: <%=  transaction._id %>
+      <br> transacation_number: <%=transaction.transacation_number%>
+      <br> transacation_type: <%=transaction.transacation_type%>
+      <br> name: <%=transaction.name%>
+      <br> accountNumber: <%=transaction.accountNumber%>
+      <br> transaction_date: <%=transaction.transaction_date%>
+      <hr>
+      
+      <form method="get" action="/transaction">
+        <input type="submit" value="Return to list" class="btn btn-caution" />
+      </form>
+
+      <form method="POST" action="/transaction/delete/<%= transaction._id %>">
+        <input type="submit" value="Delete this item" class="btn btn-danger pull-right" />
+      </form>
+
+    </div>
+  </div>
+</div>
