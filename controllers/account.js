@@ -11,13 +11,13 @@ const LOG = require('../utils/logger.js')
 const find = require('lodash.find')
 const remove = require('lodash.remove')
 const Model = require('../models/account.js')
-const notfoundstring = 'user not found'
+const notfoundstring = 'account not found'
 
 
 //get all JSON
 api.get('/findall', (req, res) => {
     res.setHeader('Content-Type', 'application/json')
-    const data = req.app.locals.accounts.query
+    const data = req.app.locals.account.query
     res.send(JSON.stringify(data))
   })
 
@@ -25,7 +25,7 @@ api.get('/findall', (req, res) => {
 api.get('/findone/:id', (req, res) => {
     res.setHeader('Content-Type', 'application/json')
     const id = parseInt(req.params.id)
-    const data = req.app.locals.accounts.query
+    const data = req.app.locals.account.query
     const item = find(data, { _id: id })
     if (!item) { return res.end(notfoundstring) }
     res.send(JSON.stringify(item))
@@ -45,7 +45,7 @@ api.get('/create', (req, res) => {
     {
       title: 'Create Account',
       layout: 'layout.ejs',
-      user: item
+      account: item
     })
 })
 
@@ -54,7 +54,7 @@ api.get('/create', (req, res) => {
 api.get('/delete/:id', (req, res) => {
   LOG.info(`Handling GET /delete/:id ${req}`)
   const id = parseInt(req.params.id)
-  const data = req.app.locals.users.query
+  const data = req.app.locals.account.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`RETURNING VIEW FOR ${JSON.stringify(item)}`)
@@ -62,7 +62,7 @@ api.get('/delete/:id', (req, res) => {
     {
       title: 'Delete account',
       layout: 'layout.ejs',
-      user: item
+      account: item
     })
 })
 
@@ -70,7 +70,7 @@ api.get('/delete/:id', (req, res) => {
 api.get('/details/:id', (req, res) => {
   LOG.info(`Handling GET /details/:id ${req}`)
   const id = parseInt(req.params.id)
-  const data = req.app.locals.users.query
+  const data = req.app.locals.account.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`RETURNING VIEW FOR ${JSON.stringify(item)}`)
@@ -78,7 +78,7 @@ api.get('/details/:id', (req, res) => {
     {
       title: 'account Details',
       layout: 'layout.ejs',
-      user: item
+      account: item
     })
 })
 
@@ -86,7 +86,7 @@ api.get('/details/:id', (req, res) => {
 api.get('/edit/:id', (req, res) => {
   LOG.info(`Handling GET /edit/:id ${req}`)
   const id = parseInt(req.params.id)
-  const data = req.app.locals.users.query
+  const data = req.app.locals.account.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`RETURNING VIEW FOR${JSON.stringify(item)}`)
@@ -94,7 +94,7 @@ api.get('/edit/:id', (req, res) => {
     {
       title: 'accounts',
       layout: 'layout.ejs',
-      user: item
+      account: item
     })
 })
 
@@ -104,7 +104,7 @@ api.get('/edit/:id', (req, res) => {
 api.post('/save', (req, res) => {
   LOG.info(`Handling POST ${req}`)
   LOG.debug(JSON.stringify(req.body))
-  const data = req.app.locals.accounts.query //
+  const data = req.app.locals.account.query //
   const item = new Model()
   LOG.info(`NEW ID ${req.body._id}`)
   item._id = parseInt(req.body._id)
@@ -113,7 +113,7 @@ api.post('/save', (req, res) => {
   item.routingNum = req.body.routingNum
 
   data.push(item)
-  LOG.info(`SAVING NEW user ${JSON.stringify(item)}`)
+  LOG.info(`SAVING NEW account ${JSON.stringify(item)}`)
   return res.redirect('/account')
 })
 
@@ -130,7 +130,7 @@ api.post('/save/:id', (req, res) => {
   item.accountNum = req.body.accountNum
   item.balance = req.body.balance
   item.routingNum = req.body.routingNum
-  LOG.info(`SAVING UPDATED user ${JSON.stringify(item)}`)
+  LOG.info(`SAVING UPDATED account ${JSON.stringify(item)}`)
   return res.redirect('/account')
 })
 

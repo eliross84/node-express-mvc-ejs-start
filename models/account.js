@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 
 const OrderSchema = new mongoose.Schema({
     _id: {type: Number, required: true, unique: true},
-    acountNum: {type: Number, required: true},
+    accountNum: {type: Number, required: true},
     balance: {type: Number, required: true},
     routingNum: {type: Number, required: true, unique: true}
 })
