@@ -11,7 +11,7 @@ const orders = require('../data/orders.json')
 const orderLineItems = require('../data/orderLineItems.json')
 const puppies = require('../data/puppies.json')
 const users = require('../data/users.json')
-
+const accounts = require('../data/account.json')
 
 
 // inject the app to seed the data
@@ -99,6 +99,18 @@ module.exports = (app) => {
   // initialize app.locals (these objects will be available to our controllers)
   app.locals.transactions = db.transactions.find(transactions)
   LOG.debug(`${app.locals.transactions.query.length} transaction seeded`)
+
+
+  db.accounts = new Datastore()
+  db.accounts.loadDatabase()
+  
+  // insert the sample data into our data store
+  db.accounts.insert(accounts)
+
+  // initialize app.locals (these objects will be available to our controllers)
+  
+  app.locals.accounts = db.accounts.find(accounts)
+  LOG.debug(`${app.locals.accounts.query.length} accounts seeded`)
 
 
 

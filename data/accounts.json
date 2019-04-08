@@ -1,0 +1,20 @@
+[
+    {
+        "_id": 111,
+        "accountNum": 12345,
+        "balance": 100,
+        "routingNum": 1234567890
+    },
+    {
+        "_id": 112,
+        "accountNum": 12350,
+        "balance": 118,
+        "routingNum": 1234566890
+    },
+    {
+        "_id": 113,
+        "accountNum": 12355,
+        "balance": 1020,
+        "routingNum": 1232456747
+    }
+]
