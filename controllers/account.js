@@ -17,7 +17,7 @@ const notfoundstring = 'account not found'
 //get all JSON
 api.get('/findall', (req, res) => {
     res.setHeader('Content-Type', 'application/json')
-    const data = req.app.locals.account.query
+    const data = req.app.locals.accounts.query
     res.send(JSON.stringify(data))
   })
 
@@ -25,7 +25,7 @@ api.get('/findall', (req, res) => {
 api.get('/findone/:id', (req, res) => {
     res.setHeader('Content-Type', 'application/json')
     const id = parseInt(req.params.id)
-    const data = req.app.locals.account.query
+    const data = req.app.locals.accounts.query
     const item = find(data, { _id: id })
     if (!item) { return res.end(notfoundstring) }
     res.send(JSON.stringify(item))
@@ -54,7 +54,7 @@ api.get('/create', (req, res) => {
 api.get('/delete/:id', (req, res) => {
   LOG.info(`Handling GET /delete/:id ${req}`)
   const id = parseInt(req.params.id)
-  const data = req.app.locals.account.query
+  const data = req.app.locals.accounts.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`RETURNING VIEW FOR ${JSON.stringify(item)}`)
@@ -70,7 +70,7 @@ api.get('/delete/:id', (req, res) => {
 api.get('/details/:id', (req, res) => {
   LOG.info(`Handling GET /details/:id ${req}`)
   const id = parseInt(req.params.id)
-  const data = req.app.locals.account.query
+  const data = req.app.locals.accounts.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`RETURNING VIEW FOR ${JSON.stringify(item)}`)
@@ -86,7 +86,7 @@ api.get('/details/:id', (req, res) => {
 api.get('/edit/:id', (req, res) => {
   LOG.info(`Handling GET /edit/:id ${req}`)
   const id = parseInt(req.params.id)
-  const data = req.app.locals.account.query
+  const data = req.app.locals.accounts.query
   const item = find(data, { _id: id })
   if (!item) { return res.end(notfoundstring) }
   LOG.info(`RETURNING VIEW FOR${JSON.stringify(item)}`)
@@ -104,7 +104,7 @@ api.get('/edit/:id', (req, res) => {
 api.post('/save', (req, res) => {
   LOG.info(`Handling POST ${req}`)
   LOG.debug(JSON.stringify(req.body))
-  const data = req.app.locals.account.query //
+  const data = req.app.locals.accounts.query //
   const item = new Model()
   LOG.info(`NEW ID ${req.body._id}`)
   item._id = parseInt(req.body._id)

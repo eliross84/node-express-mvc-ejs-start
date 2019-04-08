@@ -11,7 +11,7 @@ const orders = require('../data/orders.json')
 const orderLineItems = require('../data/orderLineItems.json')
 const puppies = require('../data/puppies.json')
 const users = require('../data/users.json')
-const accounts = require('../data/account.json')
+const accounts = require('../data/accounts.json')
 
 
 // inject the app to seed the data
