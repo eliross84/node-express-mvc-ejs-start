@@ -36,29 +36,23 @@
 
 <!-- PUT CLIENT SIDE CODE HERE -->
 <script>
-
   // function toCurrency(amount) 
-
   // https://gist.github.com/kylefox/780065
   function toCurrency(amount) {
     return "$" + amount.toFixed(2);
   };
-
   // function toCurrencyInt(amount) 
   function toCurrencyInt(amount) {
     return "$" + amount.toFixed(0);
   };
-
   // Add  .toCurrency() method to all Numbers
   Number.prototype.toCurrency = function () {
     return toCurrency(this);
   };
-
   // Add  .toCurrencyInt() method to all Numbers
   Number.prototype.toCurrencyInt = function () {
     return toCurrencyInt(this);
   };
-
   function onFormChange() {
     const newAge = parseFloat($("input[name=age]").val());
     let price = 75
@@ -67,12 +61,10 @@
     }
     $("#puppyCost").html(price.toCurrencyInt());
   }
-
   // window.onload = a function that will call all update functions to display calculated values
   window.onload = function () {
     onFormChange();
   }
-
   // prevent submission when hitting enter key - optional, but user-friendly 
   document.forms[0].onkeypress = function (e) {
     var key = e.charCode || e.keyCode || 0;
@@ -80,6 +72,5 @@
       e.preventDefault();
     }
   }
-
 // END CLIENT SIDE CODE  (close the script tag)
-</script>
+</script> 
