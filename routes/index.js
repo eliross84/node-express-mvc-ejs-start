@@ -28,6 +28,7 @@ router.use('/product', require('../controllers/product.js'))
 router.use('/puppy', require('../controllers/puppy.js'))
 router.use('/user', require('../controllers/user.js'))
 router.use('/transaction', require('../controllers/transaction.js'))
+router.use('/account', require('../controllers/account.js'))
 
 LOG.debug('END routing')
 module.exports = router
