@@ -6,10 +6,10 @@
 
       <h2>Confirm deletion of account</h2>
       <br>
-      <br> ID: <%=  account._id %>
-      <br> acountNum: <%=account.acountNum%>
-      <br> balance: <%= account.balance %>
-      <br> routingNum: <%= account.routingNum %>
+      <br> ID: <%=  accounts._id %>
+      <br> accountNum: <%=accounts.acountNum%>
+      <br> balance: <%= accounts.balance %>
+      <br> routingNum: <%= accounts.routingNum %>
       <br>
       <hr>
       
@@ -17,7 +17,7 @@
         <input type="submit" value="Return to list" class="btn btn-caution" />
       </form>
 
-      <form method="POST" action="/account/delete/<%= account._id %>">
+      <form method="POST" action="/account/delete/<%= accounts._id %>">
         <input type="submit" value="Delete this item" class="btn btn-danger pull-right" />
       </form>
 

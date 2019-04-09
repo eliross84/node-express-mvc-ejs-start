@@ -13,15 +13,15 @@
         <br>
       </p>
       <% for (var i = accounts.query.length-1; i >= 0; i--) {   
-        accounts = accounts.query[i];   %>
+        account = accounts.query[i];   %>
       <div class="panel panel-default">
         <div class="panel-heading"></div>
         <div class="text-muted pull-right"></div>
         <div class="panel-body">
 
           <br>
-          <br> ID: <%=  account._id %>
-          <br> acountNum: <%=accounts.acountNum%>
+          <br> ID: <%= accounts._id %>
+          <br> accountNum: <%= accounts.accountNum%>
           <br> balance: <%= accounts.balance %>
           <br> routingNum: <%= accounts.routingNum %>
           <br>
