@@ -34,7 +34,7 @@ LOG.info('Environment variables loaded into process.env.')
 const app = express()
 
 // configure app.settings.............................
-app.set('port', PORT )
+app.set('port', process.env.PORT || DEFAULT_PORT )
 app.set('host', HOST )
 
 // set the root view folder
@@ -74,15 +74,8 @@ const port = app.get('port')
 const host = app.get('host')
 const env = app.get('env')
 
-/*
-
-
-
-*/
-
-
-app.listen(port, host, () => {
-  console.log(`\nApp running at http://${host}:${port}/ in ${env} mode`)
+app.listen(app.get('port'), () => {
+  console.log(`\nApp running at http://localhost:%d/ in %s mode`, app.get('port'), app.get('env'))
   console.log('Press CTRL-C to stop\n')
 })
 
