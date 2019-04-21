@@ -15,11 +15,12 @@
     "array-flatten": "latest",
     "async": "latest",
     "body-parser": "latest",
+    "chai": "^4.2.0",
     "consolidate": "latest",
     "dotenv": "latest",
     "ejs": "latest",
     "errorhandler": "latest",
-    "express": "latest",
+    "express": "^4.16.4",
     "express-ejs-layouts": "latest",
     "express-status-monitor": "latest",
     "express-validator": "latest",
@@ -27,6 +28,7 @@
     "lodash.find": "latest",
     "lodash.findindex": "latest",
     "lodash.remove": "latest",
+    "mocha": "^6.1.4",
     "mongoose": "latest",
     "nedb": "latest",
     "request": "latest",
@@ -34,6 +36,7 @@
     "winston": "latest"
   },
   "scripts": {
-    "start": "node app.js"
+    "start": "node index.js",
+    "test": "mocha"
   }
 }
