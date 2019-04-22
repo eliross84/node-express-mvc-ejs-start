@@ -34,7 +34,7 @@ LOG.info('Environment variables loaded into process.env.')
 const app = express()
 
 // configure app.settings.............................
-app.set('port', process.env.PORT || DEFAULT_PORT)
+app.set('port', process.env.PORT)
 app.set('host', process.env.HOST)
 
 // set the root view folder
