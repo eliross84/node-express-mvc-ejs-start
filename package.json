@@ -30,13 +30,14 @@
     "lodash.remove": "latest",
     "mocha": "^6.1.4",
     "mongoose": "latest",
+    "nodemon": "latest",
     "nedb": "latest",
     "request": "latest",
     "serve-favicon": "latest",
     "winston": "latest"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon app.js",
     "test": "jasmine-node spec",
     "test-cover": "istanbul cover --include-all-sources spec/app.spec.js && istanbul check-coverage"
   },
