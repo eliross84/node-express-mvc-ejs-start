@@ -25,7 +25,8 @@ Our app is a basic viewing app that shows the details of all users, orders, and 
 
 ## Links
 
-- Repo <https://bitbucket.org/professorcase/node-express-mvc-ejs-start>
+- Heroku hosted app <https://aqueous-beyond-88174.herokuapp.com/>
+- Repo <https://github.com/eliross84/node-express-mvc-ejs-start>
 
 ## Prerequisites
 
